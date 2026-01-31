@@ -1,0 +1,303 @@
+//MongoDB Exercises--> 
+//library1> db.books.find()
+// [
+//   {
+//     _id: ObjectId('697db7e649ec31c3db628ca0'),
+//     name: 'The Great Gatsby',
+//     author: 'Scott',
+//     publishedyear: 1925,
+//     published_year: 2025
+//   },
+//   {
+//     _id: ObjectId('697db9ad49ec31c3db628ca1'),
+//     name: 'The Harry Potter',
+//     author: 'JK Rowling',
+//     published_year: 1997
+//   },
+//   {
+//     _id: ObjectId('697db9ad49ec31c3db628ca2'),
+//     name: 'Think like a monk',
+//     author: 'Jay Shetty',
+//     published_year: 2020
+//   },
+//   {
+//     _id: ObjectId('697db9ad49ec31c3db628ca3'),
+//     name: 'The secret',
+//     author: 'Rhonda Byrne',
+//     published_year: 2006
+//   },
+//   {
+//     _id: ObjectId('697dd0b04c88ad1471628ca0'),
+//     name: 'The Catcher of the eye',
+//     author: 'salinger',
+//     published_year: 1951
+//   },
+//   {
+//     _id: ObjectId('697dd0b04c88ad1471628ca1'),
+//     name: 'To Kill a mocking bird',
+//     author: 'Harper Lee',
+//     published_year: 1960
+//   }
+// ]
+//  making changes in _id: ObjectId('697db7e649ec31c3db628ca0')--> db.books.updateOne({name:"The Great Gatsby"}{$set:{published_year:2025}})
+
+// After the change the db collection ---> 
+//  {
+//     _id: ObjectId('697db7e649ec31c3db628ca0'),
+//     name: 'The Great Gatsby',
+//     author: 'Scott',
+//     publishedyear: 1925,
+//     published_year: 2025
+//   },
+
+
+// 2. Read operation: 
+// 
+// library1> db.books.find({author:"JK Rowling"})
+// output
+// [
+//   {
+//     _id: ObjectId('697db9ad49ec31c3db628ca1'),
+//     name: 'The Harry Potter',
+//     author: 'JK Rowling',
+//     published_year: 1997
+//   }
+// ]
+//
+//
+//fetching earliest published ---> db.books.find().sort({published_year:-1}).limit(1) 
+
+//output
+//[
+//   {
+//     _id: ObjectId('697db9ad49ec31c3db628ca1'),
+//     name: 'The Harry Potter',
+//     author: 'JK Rowling',
+//     published_year: 1997
+//   }
+// ]
+// Fetching recently published books
+//[
+//   {
+//     _id: ObjectId('697db7e649ec31c3db628ca0'),
+//     name: 'The Great Gatsby',
+//     author: 'Scott',
+//     publishedyear: 1925,
+//     published_year: 2025
+//   },
+//   {
+//     _id: ObjectId('697db9ad49ec31c3db628ca2'),
+//     name: 'Think like a monk',
+//     author: 'Jay Shetty',
+//     published_year: 2020
+//   },
+//   {
+//     _id: ObjectId('697db9ad49ec31c3db628ca3'),
+//     name: 'The secret',
+//     author: 'Rhonda Byrne',
+//     published_year: 2006
+//   }
+// ]
+// 
+// 3. Update Operation: 
+//library1> db.books.updateOne({name:"The Great Gatsby"},{$set:{published_year:2003}}) ----> Update One
+//{
+//   acknowledged: true,
+//   insertedId: null,
+//   matchedCount: 1,
+//   modifiedCount: 1,
+//   up
+// {
+//     _id: ObjectId('697db7e649ec31c3db628ca0'),
+//     name: 'The Great Gatsby',
+//     author: 'Scott',
+//     publishedyear: 1925,
+//     published_year: 2006
+//   },
+// library1> db.books.updateMany({},{$set:{genre:"Magic&Mystery"}})
+// output
+//[
+//   {
+//     _id: ObjectId('697db7e649ec31c3db628ca0'),
+//     name: 'The Great Gatsby',
+//     author: 'Scott',
+//     publishedyear: 1925,
+//     published_year: 2006,
+//     genre: 'Magic and Mystery'
+//   },
+//   {
+//     _id: ObjectId('697db9ad49ec31c3db628ca1'),
+//     name: 'The Harry Potter',
+//     author: 'JK Rowling',
+//     published_year: 1997,
+//     genre: 'Magic and Mystery'
+//   },
+//   {
+//     _id: ObjectId('697db9ad49ec31c3db628ca2'),
+//     name: 'Think like a monk',
+//     author: 'Jay Shetty',
+//     published_year: 2020,
+//     genre: 'Magic and Mystery'
+//   },
+//   {
+//     _id: ObjectId('697db9ad49ec31c3db628ca3'),
+//     name: 'The secret',
+//     author: 'Rhonda Byrne',
+//     published_year: 2006,
+//     genre: 'Magic and Mystery'
+//   },
+//   {
+//     _id: ObjectId('697dd0b04c88ad1471628ca0'),
+//     name: 'The Catcher of the eye',
+//     author: 'salinger',
+//     published_year: 1951,
+//     genre: 'Magic and Mystery'
+//   },
+//   {
+//     _id: ObjectId('697dd0b04c88ad1471628ca1'),
+//     name: 'To Kill a mocking bird',
+//     author: 'Harper Lee',
+//     published_year: 1960,
+//     genre: 'Magic and Mystery'
+//   }
+// ]
+// 4. Delete  
+//library1>db.books.deleteOne({title:"Think like a Monk"}) ---> delete one
+//output:
+//[
+  {
+//     _id: ObjectId('697db7e649ec31c3db628ca0'),
+//     name: 'The Great Gatsby',
+//     author: 'Scott',
+//     publishedyear: 1925,
+//     published_year: 2006,
+//     genre: 'Magic and Mystery'
+//   },
+//   {
+//     _id: ObjectId('697db9ad49ec31c3db628ca1'),
+//     name: 'The Harry Potter',
+//     author: 'JK Rowling',
+//     published_year: 1997,
+//     genre: 'Magic and Mystery'
+//   },
+//   {
+//     _id: ObjectId('697db9ad49ec31c3db628ca2'),
+//     name: 'Think like a monk',
+//     author: 'Jay Shetty',
+//     published_year: 2020,
+//     genre: 'Magic and Mystery'
+//   },
+//   {
+//     _id: ObjectId('697db9ad49ec31c3db628ca3'),
+//     name: 'The secret',
+//     author: 'Rhonda Byrne',
+//     published_year: 2006,
+//     genre: 'Magic and Mystery'
+//   },
+//   {
+//     _id: ObjectId('697dd0b04c88ad1471628ca0'),
+//     name: 'The Catcher of the eye',
+//     author: 'salinger',
+//     published_year: 1951,
+//     genre: 'Magic and Mystery'
+//   },
+//   {
+//     _id: ObjectId('697dd0b04c88ad1471628ca1'),
+//     name: 'To Kill a mocking bird',
+//     author: 'Harper Lee',
+//     published_year: 1960,
+//     genre: 'Magic and Mystery'
+//   },
+//   {
+//     _id: ObjectId('697dd4db4c88ad1471628ca2'),
+//     name: "You don't know Javascript",
+//     author: 'Kyle Simpson',
+//     published_year: 2006
+//   },
+//   {
+//     _id: ObjectId('697dd4db4c88ad1471628ca3'),
+//     name: 'Clean Code',
+//     author: 'Robert',
+//     published_year: 2008
+//   }
+// ]
+//
+// 
+//
+//
+//
+
+
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+//
+//
+//
+//
+//
+
+
+//
+//
+
+//
+//
+
+//
+//
+
+//
+//
+
+//
+//
+
+//
+//
+
+//
+//
+
+//
+//
+
+//
+//
+//
+//
+
+//
+//
+//
+
+//
+//
+//
+//
+
+//
+//
+//
+//
+//
+
+//
+//
+
+//
+//
+//
+//
+//
+//
+
+//
+//

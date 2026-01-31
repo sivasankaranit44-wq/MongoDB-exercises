@@ -1,0 +1,94 @@
+// Tasks -----> Set one 
+
+// 1. Database & Collection Setup:
+
+// o Create a new database (e.g., studentDB)    
+// test> use studentDB
+// o Create a collection (e.g., students)
+// creating collection --> studentDB>db.students
+
+// 2. Insert Operations:
+
+// o Insert one document into the students collection.
+// studentDB>db.students.insertOne({name:"John Cena", age:27, course:"Cybersecurity", status:"Partially Paid"})
+
+// o Insert multiple documents with fields like name, age, course, status.
+// studentDB>db.students.insertMany([{name:"Sivasankaran",age:25,course:"MERN Stack",status:"Enrolled"},
+// {name:"Arjun",age:28, course:"Data Science",status:"Enrolled"},
+// {name:"Rizwan", age:27, course:"MERN stack", status:"Partially Paid"}
+// {name:"Naresh", age:30, course:"MERN Stack", status:"Enrolled"}])
+
+//3. Read Operations:
+// o Fetch all documents from the collection.
+// studentDB>db.students.find()
+
+// o Use filters to fetch specific data (e.g., students enrolled in “MERN Stack”).
+// studentDB>db.students.status({course: "MERN stack"}) ---> For fetching one data
+// studentDB>db.students.status({course: "MERN Stack", status:"Enrolled"})
+
+// 4. Update Operations:
+
+// o Update a single document (e.g., change the status of a student to completed).
+// studentDB>db.students.updateOne({name:"Sivasankaran"},{$set:{Status:"Partially Paid"}})----> Updating one document
+
+// o Update multiple documents at once.
+// studentDB>db.students.updateMany({name:{$in: ["Sivasankaran", "John Cena"]}},{$set:{course:"Data Analytics"}})
+// For updating one parameter for both the persons we can use $set function for updating same course for updating different courses we have update using
+// "updateOne" function (I tried to set different courses inside an array it showed error)
+
+// 5. Delete Operations:
+
+// o Delete one document based on a condition.
+// studentDB>db.students.deleteOne({name:"Rizwan"})
+
+// o Delete all documents in the collection (for practice purpose only).
+// studentDB>db.students.deleteMany({name:{$in:["Rizwan","Naresh"]}})---> for deleting 2 person from the collection
+// studentDB>db.students.deleteMany({}) -----> Will delete all data from the collection
+
+// 6. Query Operators:
+
+// o Practice using $gt, $lt, $in, $and, $or, $exists in different queries.
+
+// gt --> Greater than function --> db.students.find({ age: { $gt: 25 } })
+// lt --> less than function --> db.students.find({age:{$lt:27}})
+// in --> for fetching specfic set of data from the collection---> db.students.find({name:{$in["Sivasankaran", "John cena"]}})
+// and--> for selecting 2 parameters/columns from the data db.students.find({$and:{course:["MERN Stack",status:"Enrolled"]}})
+// or --> choosing 2 datas db.students.find([{$or:{course:"MERN Stack"},{course:"Data Analytics"}}])
+// exists --> shows the existence of the data if the document exists it says exists:true, if not it shows exists:false
+// studentDB>db.students.find({age:{$lt:25},$or{course:["MERN Stack","Data Analytics"]}})
+
+// 7 Library DB 
+// creating a DB 
+// db.books.insertMany([
+//   {
+//     title: "Atomic Habits",
+//     author: "James Clear",
+//     genre: "Self Help",
+//     available: true
+//   },
+//   {
+//     title: "Clean Code",
+//     author: "Robert C. Martin",
+//     genre: "Programming",
+//     available: true
+//   },
+//   {
+//     title: "The Secret",
+//     author: "Rhone Byrne",
+//     genre: "Self help",
+//     available: false
+//   },
+//   {
+//     title: "The Alchemist",
+//     author: "Robert Martin",
+//     genre: "Fiction",
+//     available: false
+// ])
+
+// USing Functions 
+// db.books.find({ available: true })
+// db.books.find({ genre: "Programming" })
+// Update ---> db.books.updateOne({title:"The Alchemist"},{$set:{available:true}})
+
+
+
