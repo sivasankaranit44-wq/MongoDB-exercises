@@ -1,5 +1,6 @@
 //MongoDB Exercises--> 
 //library1> db.books.find()
+// output
 // [
 //   {
 //     _id: ObjectId('697db7e649ec31c3db628ca0'),
@@ -65,7 +66,7 @@
 // ]
 //
 //
-//fetching earliest published ---> db.books.find().sort({published_year:-1}).limit(1) 
+// 3.fetching earliest published ---> db.books.find().sort({published_year:-1}).limit(1) 
 
 //output
 //[
@@ -76,7 +77,7 @@
 //     published_year: 1997
 //   }
 // ]
-// Fetching recently published books
+// 4. Fetching recently published books
 //[
 //   {
 //     _id: ObjectId('697db7e649ec31c3db628ca0'),
@@ -99,7 +100,7 @@
 //   }
 // ]
 // 
-// 3. Update Operation: 
+// 5. Update Operation: 
 //library1> db.books.updateOne({name:"The Great Gatsby"},{$set:{published_year:2003}}) ----> Update One
 //{
 //   acknowledged: true,
@@ -161,7 +162,7 @@
 //     genre: 'Magic and Mystery'
 //   }
 // ]
-// 4. Delete  
+// 6. Delete  
 //library1>db.books.deleteOne({title:"Think like a Monk"}) ---> delete one
 //output:
 //[
@@ -301,3 +302,4 @@
 
 //
 //
+
